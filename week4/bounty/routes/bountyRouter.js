@@ -26,10 +26,14 @@ bountyRouter.route('/')
 
 bountyRouter.route('/:id')
     .delete((req, res) => {
-
+        const bountiesId = req.params.bountiesId
+        res.send("successfully deleted!")
     })
     .put((req, res) => {
-        
+        const bounty = req.body
+        bounty._id = uuidv4()
+        bounties.push(bounty)
+        res.send(`Added new Bounty: ${bounty.firstName} ${bounty.lastName}`)
     })
 
 module.exports = bountyRouter
